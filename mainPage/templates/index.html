@@ -262,10 +262,10 @@
 
     <!-- Состав совета -->
         <div class="container-fluid" id="scientists-list">
-        <hr><div> Показать количество записей; Поиск; И т.д.</div><hr>
+        <div> Показать количество записей; Поиск; И т.д. Стремный раздел, переделай</div>
         <div class="row">
         <div class="col-md-2"> </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             {% for user in users %} <!-- Выводятся поля с принадлежностью к ученым -->
                 {% if user.scientist == True %}
                     <hr>
@@ -277,7 +277,7 @@
                                 <img width="250" height="250" class="img-fluid rounded float-left" src="../../media/no_photo.png" alt="Изображение было удалено с сервера.">
                             {% endif %}
                         </div>
-                        <div class="col-7 pr-4">
+                        <div class="col-6 pr-4">
                             <h4 class="text-dark">
                                 {{ user.user.last_name }}
                                 {{ user.user.first_name }}
@@ -297,7 +297,22 @@
         </div>
         </div>
         </div>
+    <br>
+    <br>
+    <nav aria-label="пагинатор">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
+        </ul>
+    </nav>
+    <br>
     <hr>
+    <br>
+    <br>
+    <div class="container-fluid"> Ну тут должен быть подвал</div>
     <br>
 
 </body>
