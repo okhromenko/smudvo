@@ -238,6 +238,27 @@
     </div>
     <hr class='my-4'>
 
+    <div class='container-fluid padding'>
+        <div class="container-fluid padding"  id="conferences" class="mt-5">
+            <div class='row padding'>
+                <div class='col-lg-9' style="border-width: 0 1px 0 0;border-style: solid; padding-right: 10px; border-color: #6c757d" id="ads">
+                    <!-- Объявления -->
+                    {% for this_ads in ads %}
+                        <div class="text-center">
+                            <hr>
+                            <h6 class="text-justify">{{ this_ads.title }}</h6>
+                            <br>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class='col-lg-3'>
+                    <center><h2>Объявления</h2></center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class='my-4'>
+
 
     <!-- Состав совета -->
         <div class="container-fluid" id="scientists-list">
@@ -278,20 +299,6 @@
         </div>
     <hr>
     <br>
-
-    <div class="col-md-4" style="padding-left: 65px">
-     <hr><div> Пока не придумала о впихивании этой штуки</div><hr>
-        <div class='col-sm-12; row jumbotron' id="ads">
-            <!-- Объявления -->
-            {% for this_ads in ads %}
-                <div class="text-center">
-                    <hr>
-                    <h6 class="text-justify">{{ this_ads.title }}</h6>
-                    <br>
-                </div>{% endfor %}
-        </div>
-    </div>
-    <hr>
 
 </body>
 </html>
