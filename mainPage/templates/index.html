@@ -161,7 +161,6 @@
                         </div>
                     {% endfor %}
                 </div>
-<<<<<<< Updated upstream
             </div>
         </div>
     </div>
@@ -208,65 +207,12 @@
                     {% endfor %}
                 {% endif %}
                 </div>
-=======
->>>>>>> Stashed changes
             </div>
         </div>
     </div>
     </div>
     </div>
 
-<<<<<<< Updated upstream
-=======
-    <br>
-    <br>
-
-    <!-- О совете -->
-    <div class='container-fluid padding'>
-    <div class='container-fluid padding'>
-    <div class='container-fluid padding'>
-        <div class="row">
-            <div class="col-md-7">
-                <div class='row jumbotron' id="about-council">
-                    <div class='col-sm-12'>
-                        <p class='lead'> Совет молодых ученых Дальневосточного отделения Российской академии наук воссоздан <b>14 марта 2002 года</b>
-                        с целью объединения научной молодежи, выражения ее интересов, сохранения научного потенциала и преодоления
-                        негативных тенденций в возрастной структуре научных кадров.</p>
-                        <a href='#'><button type='button' class='btn btn-outline-secondary btn-lg'> Читать </button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5">
-            <!-- Опрос-->
-                {% if request.user.is_authenticated %}
-                    <div class="container-fluid" id="polls">
-                    {% for poll in polls %}
-                        <div class="col-md-9 col-xs-9 col-sm-4">
-                            <li class="list-group-item">
-                                <strong>{{ poll.question }}</strong>
-                                <span style="display: block; justify-content: flex-end" class="pull-right">
-                                    {% if not user.is_superuser %}
-                                        <br>
-                                        <a style="display: block" href="{% url 'vote' poll.id %}" class="btn btn-info btn-xs">Проголосовать</a> &nbsp;
-                                    {% endif %}
-                                    {% if user.is_superuser %}
-                                        <a href="{% url 'results' poll.id %}" class="btn btn-outline-primary">Показать результаты</a> &nbsp;
-                                        <a href="{% url 'delete' poll.id %}" class="btn btn-default btn-xs">Удалить опрос</a>
-                                    {% endif %}
-                                </span>
-                            </li>
-                        </div>
-                        <br>
-                    {% endfor %}
-                {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-
->>>>>>> Stashed changes
     <hr>
     <!-- Конференции -->
     <div class='container-fluid padding'>
@@ -288,38 +234,6 @@
                         {% endfor %}
                     </div>
                 </div>
-<<<<<<< Updated upstream
-            </div>
-        </div>
-    </div>
-    <hr class='my-4'>
-
-    <div class='container-fluid padding'>
-        <div class="container-fluid padding"  id="conferences" class="mt-5">
-            <div class='row padding'>
-                <div class='col-lg-9' style="border-width: 0 1px 0 0;border-style: solid; padding-right: 10px; border-color: #6c757d" id="ads">
-                    <!-- Объявления -->
-                    {% for this_ads in ads %}
-                        <div class="text-center">
-                            <hr>
-                            <h6 class="text-justify">{{ this_ads.title }}</h6>
-                            <br>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class='col-lg-3'>
-                    <center><h2>Объявления</h2></center>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr class='my-4'>
-
-
-    <!-- Состав совета -->
-        <div class="container-fluid" id="scientists-list">
-        <div> Показать количество записей; Поиск; И т.д. Стремный раздел, переделай</div>
-=======
             </div>
         </div>
     </div>
@@ -351,22 +265,15 @@
     <!-- Состав совета -->
         <div class="container-fluid" style="background-color: #e7eff7" id="scientists-list">
         <hr>
->>>>>>> Stashed changes
         <div class="row">
         <div class="col-md-2"> </div>
         <div class="col-md-9">
             {% for user in users %} <!-- Выводятся поля с принадлежностью к ученым -->
                 {% if user.scientist == True %}
-<<<<<<< Updated upstream
-                    <hr>
-                    <div class="row">
-                        <div class="col-2">
-=======
                     <br>
                     <div class="row" style="background-color: white">
                         <div class="col-2">
                         <br>
->>>>>>> Stashed changes
                             {% if user.photo %}
                                 <img width="250" height="250" class="img-fluid rounded float-left" src="{{user.photo.url }}" alt="Изображение было удалено с сервера.">
                             {% else %}
@@ -375,10 +282,7 @@
                         <br>
                         </div>
                         <div class="col-6 pr-4">
-<<<<<<< Updated upstream
-=======
                         <br>
->>>>>>> Stashed changes
                             <h4 class="text-dark">
                                 {{ user.user.last_name }}
                                 {{ user.user.first_name }}
@@ -398,27 +302,6 @@
             {% endfor %}
         </div>
         </div>
-<<<<<<< Updated upstream
-        </div>
-    <br>
-    <br>
-    <nav aria-label="пагинатор">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
-        </ul>
-    </nav>
-    <br>
-    <hr>
-    <br>
-    <br>
-    <div class="container-fluid"> Ну тут должен быть подвал</div>
-    <br>
-
-=======
             <br>
             <br>
             <div class="text-align">
@@ -444,6 +327,5 @@
 <br>
     </div>
 
->>>>>>> Stashed changes
 </body>
 </html>
