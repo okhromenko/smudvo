@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="">
+<style>
+    html {
+  height: 100%;
+}
+    body {
+  margin: 0;
+  color: #fff;
+  /* Растягиваем body по высоте html */
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+</style>
 <head>
     <meta charset="UTF-8" />
 
@@ -59,7 +72,6 @@
         </div>
         {% endif %}
     </nav>
-
     <!-- Modal -->
     <div class="modal fade bd-example-modal-sm" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -113,159 +125,38 @@
           </div>
         </div>
 
-    <!-- JUST ONE SLIDE-->
-    <div style="padding-top: 1px" id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" >
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="../../media/banner1.png" alt=" "> <!-- Задать путь до баннера-->
-            </div>
-        </div>
-    </div>
 
-    <div class="container mt-3">
-        <div class="row text-center">
-            <div class="col-sm-12 col-md">
-                <a href="#about-council" class="some_link;  text-dark " style="font-size: large">О совете</a>
-            </div>
-            <div class="col-sm-12 col-md">
-                <a href="#scientists-list" class="text-dark" style="font-size: large">Состав совета</a>
-            </div>
-            <div class="col-sm-12 col-md">
-                <a href="#news" class="text-dark" style="font-size: large">Новости</a>
-            </div>
-            <div class="col-sm-12 col-md">
-                <a href="#ads" class="text-dark" style="font-size: large">Объявления</a>
-            </div>
-            <div class="col-sm-12 col-md">
-                <a href="#conferences" class="text-dark" style="font-size: large">Конференции</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Новости-->
-    <div class='container-fluid'>
-        <div id="news" class="mt-5">
-            <div class="col-md-12 list-post">
-                <div class="row">
-                    {% for this_news in news %}
-                        <div class="col-md-2 col-xs-12 col-sm-6">
-                            <div class="img-post">
-                                {% if this_news.photo %}
-                                    <br>
-                                    <img class="img-fluid rounded" src="{{ this_news.photo.url }}" alt="{{ this_news.title }}">
-                                {% endif %}
-                            </div>
-                            <div class="desc-post"><a href="{% url "newsPage" %}">{{ this_news.title }}</a></div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-    <!-- О совете -->
-    <div class='container-fluid padding'>
-    <div class='container-fluid padding'>
-    <div class='container-fluid padding'>
-        <div class="row">
-            <div class="col-md-7">
-                <div class='row jumbotron' id="about-council">
-                    <div class='col-sm-12'>
-                        <p class='lead'> Совет молодых ученых Дальневосточного отделения Российской академии наук воссоздан <b>14 марта 2002 года</b>
-                        с целью объединения научной молодежи, выражения ее интересов, сохранения научного потенциала и преодоления
-                        негативных тенденций в возрастной структуре научных кадров.</p>
-                        <a href='#'><button type='button' class='btn btn-outline-secondary btn-lg'> Читать </button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5">
-            <!-- Опрос-->
-                {% if request.user.is_authenticated %}
-                    <div class="container-fluid" id="polls">
-                    {% for poll in polls %}
-                        <div class="col-md-11 col-xs-9 col-sm-4">
-                            <li class="list-group-item">
-                                <strong>{{ poll.question }}</strong>
-                                <span style="display: block; justify-content: flex-end" class="pull-right">
-                                    {% if not user.is_superuser %}
-                                        <br>
-                                        <a style="display: block" href="{% url 'vote' poll.id %}" class="btn btn-info btn-xs">Проголосовать</a> &nbsp;
-                                    {% endif %}
-                                    {% if user.is_superuser %}
-                                        <a href="{% url 'results' poll.id %}" class="btn btn-outline-primary">Показать результаты</a> &nbsp;
-                                        <a href="{% url 'delete' poll.id %}" class="btn btn-default btn-xs">Удалить опрос</a>
-                                    {% endif %}
-                                </span>
-                            </li>
-                        </div>
-                        <br>
-                    {% endfor %}
-                {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-
-
-    <!-- Конференции -->
-    <div class='container-fluid padding'>
-        <div class="container-fluid padding"  id="conferences" class="mt-5">
-            <div class='row padding'>
-                <div class='col-lg-3' style="border-width: 0 1px 0 0;border-style: solid; padding-right: 10px; border-color: #6c757d">
-                    <center><h2>Конференции</h2></center>
-                </div>
-                <div class='col-lg-9'>
-                    <div class="row">
-                        {% for c in conference %}
-                            <div class="col-md-2 col-xs-12 col-sm-6">
-                                <hr>
-                                <h4>{{ c.title }}</h4>
-                                <p><b>Описание:</b> {{ c.text }}</p>
-                                <p><b>Время:</b> {{ c.date }}</p>
-                                <p><b>Место:</b> {{ c.place }}</p>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class='container-fluid padding'>
-        <div class="container-fluid padding"  id="conferences" class="mt-5">
-            <div class='row padding'>
-                <div class='col-lg-9' style="border-width: 0 1px 0 0;border-style: solid; padding-right: 10px; border-color: #6c757d" id="ads">
-                    <!-- Объявления -->
-                    {% for this_ads in ads %}
-                        <div class="text-center">
-                            <hr style="height: 1px;  background-color: #0056b3">
-                            <h6 class="text-justify">{{ this_ads.title }}</h6>
-                            <br>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class='col-lg-3'>
-                    <center><h2>Объявления</h2></center>
-                </div>
-                <br>
-                <br>
-            </div>
-        </div>
-    </div>
     <br> <br> <br>
+    <!-- Новости-->
+    <main role="main">
+    <div class='container-fluid padding'>
+            <div class='row padding'>
+                <div class='col-lg-6'>
+                   <img src='https://99px.ru/sstorage/53/2013/01/tmb_56790_1223.jpg' class='img-fluid'>
+                    <br>
+                </div>
+                <div class='col-lg-6'>
+                     <h2>Знакомтесь, прекрасные растения</h2>
+                    <p>Кактусы – одни из самых древних растений. На планете количество их разновидностей скоро достигнет трех тысяч.</p>
+                    <p>Эти колючие растения отличаются неприхотливостью в уходе. Любят минимум воды и стойко переносят большое количество солнечных ванн. Это обусловлено расположением их родины – Южной Америки. Кактусы очень разнообразны. Так как это растение известно с давних пор, люди нашли ему множество сфер для применения.</p>
+                    <p>Колючки – не единственное украшение кактуса. Некоторые виды способны цвести, и это действительно потрясающее зрелище. За многие годы существования кактусы где только не применялись. С ними также связано много мистификаций и слухов.</p>
+                </div>
+            </div>
+        </div>
+        <hr class='my-4'>
+    </main>
 
+    <br>
+    <br>
+
+    <footer role="contentinfo">
     <div class="container-fluid" style="background-color: #2c51aa">
        <br>
                 <p style="color: white">© Тык тык тык тык тык тык.<br>
                     NIP: 894-304-10-92<br>
                     Jestem zbyt leniwy, by wymyślać mądre rzeczy</p>
     </div>
+        </footer>
 
 </body>
 </html>
